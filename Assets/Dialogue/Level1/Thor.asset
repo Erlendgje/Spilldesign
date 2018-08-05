@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1e44923ab8db54cb9aed9d342ee3ef, type: 3}
+  m_Name: Thor
+  m_EditorClassIdentifier: 
+  npcName: Thor
+  conversations:
+  - messages:
+    - line: You there! You are finally awake! Come over here and help me out will
+        ya?
+      guiding: 0
+      pressE: 0
+      item: {fileID: 0}
+    dissapear: 0
+    time: 0
+  - messages:
+    - line: Hi there fella, as you can see I'm in a bit of a pickle.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: Would you please be so kind and get me out of this cage?
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: You just have to get the key, it is right over there on the floor.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: What, you don't see the key? Okey, I'll guide you.
+      guiding: 1
+      pressE: 1
+      item: {fileID: 0}
+    - line: Now come here and unlock this door.
+      guiding: 0
+      pressE: 0
+      item: {fileID: 0}
+    dissapear: 0
+    time: 0
+  - messages:
+    - line: I managed to lock myself in this cage for about a year ago...
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: I suppose I owe you a thanks, here take these glasses, they will help
+        you see better.
+      guiding: 1
+      pressE: 1
+      item: {fileID: 11400000, guid: 963dba55f75b37f40984d14ba8db996f, type: 2}
+    dissapear: 1
+    time: 0
