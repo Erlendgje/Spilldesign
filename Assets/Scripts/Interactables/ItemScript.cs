@@ -19,7 +19,7 @@ public class ItemScript : MonoBehaviour {
 		{
 			if (Input.GetKeyDown(KeyCode.E))
 			{
-				Player.player.AddItem(item);
+				GameManager.gameManager.AddItem(item);
 				Destroy(this.gameObject);
 			}
 		}

@@ -7,6 +7,10 @@ public class Controller : MonoBehaviour
 	public float speed;
 	public ParticleSystem ps;
 
+	private void Start()
+	{
+		Player.player.SetPlayerObject(this.gameObject);
+	}
 
 	// Update is called once per frame
 	void Update()
@@ -15,6 +19,11 @@ public class Controller : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			ps.Play();
+		}
+
+		if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			GameManager.gameManager.ActivateInventory();
 		}
 	}
 

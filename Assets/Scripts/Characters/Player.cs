@@ -8,7 +8,7 @@ public class Player{
 
 	private List<Item> inventory;
 
-	public GameObject UIManager;
+	private GameObject playerObject;
 
 	private Player()
 	{
@@ -25,4 +25,18 @@ public class Player{
 		inventory.Add(item);
 	}
 
+	public void SetPlayerObject(GameObject player)
+	{
+		playerObject = player;
+	}
+
+	public Transform GetTransform()
+	{
+		return playerObject.transform;
+	}
+
+	public void RemoveItem(Item item)
+	{
+		inventory.Remove(item);
+	}
 }

@@ -38,7 +38,7 @@ public class DialogueHandler : MonoBehaviour {
 
 			if(dialogue.conversations[pointInConversation].messages[i].item != null)
 			{
-				GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().AddItem(dialogue.conversations[pointInConversation].messages[i].item);
+				GameManager.gameManager.AddItem(dialogue.conversations[pointInConversation].messages[i].item);
 			}
 
 			if (dialogue.conversations[pointInConversation].messages[i].guiding)
