@@ -21,6 +21,7 @@ public class conversations
 [System.Serializable]
 public class Line
 {
+	[TextArea]
 	public string line;
 	public bool guiding;
 	public bool pressE;

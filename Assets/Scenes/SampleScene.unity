@@ -3343,6 +3343,11 @@ Prefab:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 198997999841911546, guid: 07a4ffd98b1569844a0bd002c695a91c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07a4ffd98b1569844a0bd002c695a91c, type: 2}
   m_IsPrefabAsset: 0

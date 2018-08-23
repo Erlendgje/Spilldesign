@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -79,9 +78,22 @@ public class GameManager : MonoBehaviour {
 
 	public void Equip()
 	{
-		if(activeItemElement != null)
+		if(activeItemElement != null && activeItemElement.item is Eatable)
 		{
+			Eatable temp = (Eatable) activeItemElement.item;
+			//0 = Head, 1 = Torso, 2 = Legs, 3 = Feets
+			switch (temp.type)
+			{
+				case 0:
 
+					break;
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+			}
 		}
 	}
 

@@ -7,16 +7,6 @@ using UnityEngine;
 public class Item : ScriptableObject {
 
 	public string itemName;
+	[TextArea]
 	public string description;
-
-
-	public void Equip()
-	{
-
-	}
-
-	public void Eat()
-	{
-
-	}
 }

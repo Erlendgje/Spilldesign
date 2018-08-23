@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour {
 
-	public Key key;
+	public Item key;
 	public GameObject textMesh;
 	private bool collided;
 
