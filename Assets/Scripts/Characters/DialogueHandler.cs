@@ -14,6 +14,7 @@ public class DialogueHandler : MonoBehaviour {
 	private int pointInConversation = 0;
 	private bool isRenderingDialog = false;
 	private bool writingText;
+	public List<Door> observers;
 
 	public void activate()
 	{
@@ -48,10 +49,22 @@ public class DialogueHandler : MonoBehaviour {
 			}
 		}
 
+		if (dialogue.conversations[pointInConversation].accessDoors)
+		{
+			notifyObservers();
+		}
+
 		if (dialogue.conversations[pointInConversation].dissapear)
 		{
 			yield return new WaitForSeconds(dialogue.conversations[pointInConversation].time);
 			textBobble.SetActive(false);
+		}
+		if (dialogue.disappear)
+		{
+			if(pointInConversation + 1 == dialogue.conversations.Length)
+			{
+				Destroy(this.gameObject);
+			}
 		}
 		NextConversation();
 		isRenderingDialog = false;
@@ -101,5 +114,13 @@ public class DialogueHandler : MonoBehaviour {
 	public void deactivateTextBubble()
 	{
 		textBobble.SetActive(false);
+	}
+
+	private void notifyObservers()
+	{
+		foreach(Door d in observers)
+		{
+			d.Notify();
+		}
 	}
 }

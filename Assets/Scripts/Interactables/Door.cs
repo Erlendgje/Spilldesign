@@ -2,47 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour {
+public class Door : MonoBehaviour, Observer {
 
 	public Item key;
 	public GameObject textMesh;
+	public GameObject parent;
 	private bool collided;
+	public bool canBeUnlocked;
 
 	private void Update()
 	{
-		if (collided)
+		if (canBeUnlocked)
 		{
-			if (Input.GetKeyDown(KeyCode.E))
+			if (collided)
 			{
-				if (Player.player.HasItem(key))
+				if (Input.GetKeyDown(KeyCode.E))
 				{
-					if(this.GetComponent<TriggerConversation>() != null)
+					if (GameManager.gameManager.player.HasItem(key))
 					{
-						this.GetComponent<TriggerConversation>().OpenDoor();
+						if (this.GetComponent<TriggerConversation>() != null)
+						{
+							this.GetComponent<TriggerConversation>().OpenDoor();
+						}
+						Destroy(parent);
 					}
-					Destroy(this.gameObject);
-
 				}
 			}
+		}
+		else
+		{
+
 		}
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player"))
+		if (canBeUnlocked)
 		{
-			textMesh.SetActive(true);
-
-			if (Player.player.HasItem(key))
+			if (other.CompareTag("Player"))
 			{
-				textMesh.GetComponent<TextMesh>().text = "Press E to open";
-			}
-			else
-			{
-				textMesh.GetComponent<TextMesh>().text = "Door is locked";
-			}
+				textMesh.SetActive(true);
+				textMesh.transform.eulerAngles = new Vector3(0, 0, 0);
 
-			collided = true;
+				if (GameManager.gameManager.player.HasItem(key))
+				{
+					textMesh.GetComponent<TextMesh>().text = "Press E to open";
+				}
+				else
+				{
+					textMesh.GetComponent<TextMesh>().text = "Door is locked";
+				}
+
+				collided = true;
+			}
 		}
 	}
 
@@ -54,5 +66,10 @@ public class Door : MonoBehaviour {
 			textMesh.SetActive(false);
 			collided = false;
 		}
+	}
+
+	public void Notify()
+	{
+		canBeUnlocked = true;
 	}
 }

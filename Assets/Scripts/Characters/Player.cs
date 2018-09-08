@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class Player{
 
-	public static Player player = new Player();
-
 	private List<Item> inventory;
 
 	private GameObject playerObject;
-
-	private Eatable[] equipment;
+	private Controller controller;
 
 	private int health = 1;
 	private short numberOfParticles = 200;
 	private float numberOfSeconds = 0.5f;
 
-	private Player()
+	public Player()
 	{
 		inventory = new List<Item>();
-		equipment = new Eatable[4];
 	}
 
 	public bool HasItem(Item item)
@@ -29,12 +25,31 @@ public class Player{
 
 	public void AddItem(Item item)
 	{
-		inventory.Add(item);
+		if(item is Upgrade)
+		{
+			if (!controller.vision)
+			{
+				controller.vision = true;
+			}
+			else
+			{
+				Upgrade temp = (Upgrade) item;
+				ParticleSystem.MainModule newMain = controller.ps.main;
+				newMain.startLifetime = newMain.startLifetime.constant + temp.range;
+				controller.ps.emission.SetBurst(0, new ParticleSystem.Burst(0, (int) (controller.ps.emission.GetBurst(0).count.constant * ((temp.range / newMain.startLifetime.constant) * 2 + 1))));
+				//newEmission.GetBurst(0).count = (int) (newEmission.burstCount * );
+			}
+		}
+		else
+		{
+			inventory.Add(item);
+		}
 	}
 
-	public void SetPlayerObject(GameObject player)
+	public void SetPlayerObject(GameObject player, Controller controller)
 	{
 		playerObject = player;
+		this.controller = controller;
 	}
 
 	public Transform GetTransform()
@@ -45,23 +60,5 @@ public class Player{
 	public void RemoveItem(Item item)
 	{
 		inventory.Remove(item);
-	}
-
-	public void EquipItem(Eatable item, int typeId)
-	{
-		if(equipment[typeId] != null)
-		{
-			health -= equipment[typeId].increaseHealth;
-			numberOfParticles -= equipment[typeId].increaseParticles;
-			numberOfSeconds -= equipment[typeId].increaseRange;
-		}
-
-		health += item.increaseHealth;
-		numberOfParticles += item.increaseParticles;
-		numberOfSeconds += item.increaseRange;
-
-		equipment[typeId] = item;
-
-		playerObject.GetComponentInChildren<ParticleSystem>().emission.SetBurst(0, new ParticleSystem.Burst(0, numberOfParticles, numberOfParticles, 1, 0));
 	}
 }

@@ -21,6 +21,7 @@ MonoBehaviour:
       item: {fileID: 0}
     dissapear: 0
     time: 0
+    accessDoors: 0
   - messages:
     - line: Hi there fella, as you can see I'm in a bit of a pickle.
       guiding: 0
@@ -44,15 +45,29 @@ MonoBehaviour:
       item: {fileID: 0}
     dissapear: 0
     time: 0
+    accessDoors: 0
   - messages:
-    - line: I managed to lock myself in this cage for about a year ago...
+    - line: Here take this as a thank you. That potion will make you see.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 11400000, guid: 963dba55f75b37f40984d14ba8db996f, type: 2}
+    - line: Do you feel any different?
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: I suppose I owe you a thanks, here take these glasses, they will help
-        you see better.
-      guiding: 1
+    - line: No...?
+      guiding: 0
       pressE: 1
-      item: {fileID: 11400000, guid: 963dba55f75b37f40984d14ba8db996f, type: 2}
+      item: {fileID: 0}
+    - line: Hmmm, try pressing "space". It should work.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: Well, i need to go now, see you around.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
     dissapear: 1
     time: 0
+    accessDoors: 1
+  disappear: 1
