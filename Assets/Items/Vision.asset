@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f086f3dddd17ee449801c4cde984c748, type: 3}
-  m_Name: Glasses
+  m_Script: {fileID: 11500000, guid: 0ed918df8f8b0394e9f2121036c2a7e3, type: 3}
+  m_Name: Vision
   m_EditorClassIdentifier: 
-  itemName: Glasses
-  description: Just plain ordinary glasses.
+  itemName: Potion
+  range: 0.25
