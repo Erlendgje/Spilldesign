@@ -10,6 +10,7 @@ public class DialogueHandler : MonoBehaviour {
 	public TextMesh textMesh;
 	public GameObject infoMesh;
 	public GameObject textBobble;
+	public ParticleSystem particleSystem;
 	private float rowLimit = 1f;
 	private int pointInConversation = 0;
 	private bool isRenderingDialog = false;
@@ -25,11 +26,17 @@ public class DialogueHandler : MonoBehaviour {
 	{
 		yield return new WaitWhile(() => isRendering());
 		isRenderingDialog = true;
+		
 		for (int i = 0; i < dialogue.conversations[pointInConversation].messages.Length; i++)
 		{
+			if (GameManager.gameManager.player.canSee())
+			{
+				particleSystem.Play();
+			}
 			StartCoroutine(DisplayText(dialogue.conversations[pointInConversation].messages[i].line, false));
 
 			yield return new WaitWhile(() => writingText);
+			particleSystem.Stop();
 			if (dialogue.conversations[pointInConversation].messages[i].pressE)
 			{
 				infoMesh.SetActive(true);

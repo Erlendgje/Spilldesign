@@ -61,4 +61,9 @@ public class Player{
 	{
 		inventory.Remove(item);
 	}
+
+	public bool canSee()
+	{
+		return controller.vision;
+	}
 }
