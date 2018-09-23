@@ -6,10 +6,12 @@ public class TriggerConversation : MonoBehaviour {
 
 	public DialogueHandler character;
 	public bool isDoor = false;
+	public bool dontDestroy = false;
+	public bool activateEvenIfActive;
 
 	public void OpenDoor()
 	{
-		character.activate();
+		character.activate(activateEvenIfActive);
 		Destroy(this.gameObject);
 	}
 
@@ -17,8 +19,12 @@ public class TriggerConversation : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Player") && !isDoor)
 		{
-			character.activate();
-			Destroy(this.gameObject);
+			character.activate(activateEvenIfActive);
+
+			if (!dontDestroy)
+			{
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }

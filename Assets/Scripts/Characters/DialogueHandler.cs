@@ -10,15 +10,19 @@ public class DialogueHandler : MonoBehaviour {
 	public TextMesh textMesh;
 	public GameObject infoMesh;
 	public GameObject textBobble;
-	public ParticleSystem particleSystem;
+	public ParticleSystem ps;
 	private float rowLimit = 1f;
 	private int pointInConversation = 0;
 	private bool isRenderingDialog = false;
 	private bool writingText;
 	public List<Door> observers;
 
-	public void activate()
+	public void activate(bool ifActivated)
 	{
+		if(ifActivated && isRenderingDialog)
+		{
+			return;
+		}
 		StartCoroutine(StartConversation());
 	}
 
@@ -31,12 +35,12 @@ public class DialogueHandler : MonoBehaviour {
 		{
 			if (GameManager.gameManager.player.canSee())
 			{
-				particleSystem.Play();
+				ps.Play();
 			}
 			StartCoroutine(DisplayText(dialogue.conversations[pointInConversation].messages[i].line, false));
 
 			yield return new WaitWhile(() => writingText);
-			particleSystem.Stop();
+			ps.Stop();
 			if (dialogue.conversations[pointInConversation].messages[i].pressE)
 			{
 				infoMesh.SetActive(true);
@@ -72,8 +76,16 @@ public class DialogueHandler : MonoBehaviour {
 			{
 				Destroy(this.gameObject);
 			}
+			NextConversation();
 		}
-		NextConversation();
+		else
+		{
+			if(pointInConversation +1 != dialogue.conversations.Length)
+			{
+				NextConversation();
+			}
+		}
+		
 		isRenderingDialog = false;
 	}
 

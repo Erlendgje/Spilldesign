@@ -9,6 +9,7 @@ public class Door : MonoBehaviour, Observer {
 	public GameObject parent;
 	private bool collided;
 	public bool canBeUnlocked;
+	public bool deleteKey;
 
 	private void Update()
 	{
@@ -23,6 +24,10 @@ public class Door : MonoBehaviour, Observer {
 						if (this.GetComponent<TriggerConversation>() != null)
 						{
 							this.GetComponent<TriggerConversation>().OpenDoor();
+						}
+						if (deleteKey)
+						{
+							GameManager.gameManager.player.RemoveItem(key);
 						}
 						Destroy(parent);
 					}

@@ -10,8 +10,6 @@ public class Player{
 	private Controller controller;
 
 	private int health = 1;
-	private short numberOfParticles = 200;
-	private float numberOfSeconds = 0.5f;
 
 	public Player()
 	{
@@ -65,5 +63,10 @@ public class Player{
 	public bool canSee()
 	{
 		return controller.vision;
+	}
+
+	public void canMove(bool canMove)
+	{
+		controller.setCanMove(canMove);
 	}
 }

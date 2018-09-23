@@ -7,6 +7,7 @@ public class Controller : MonoBehaviour
 	public float speed;
 	public ParticleSystem ps;
 	public bool vision = false;
+	private bool canMove = true;
 
 	private void Start()
 	{
@@ -28,7 +29,16 @@ public class Controller : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-		this.GetComponent<Rigidbody>().velocity = movement * speed;
+		if (canMove)
+		{
+			Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+			this.GetComponent<Rigidbody>().velocity = movement * speed;
+		}
+	}
+
+	public void setCanMove(bool canMove)
+	{
+		this.canMove = canMove;
+		this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 	}
 }

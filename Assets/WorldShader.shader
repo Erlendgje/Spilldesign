@@ -3,6 +3,7 @@
 	Properties
 	{
 		_Color("Color", Color) = (1,1,1,0)
+		_EnemyColor("Enemy color", Color) = (1,0,0,0)
 		_CircleRadius("Spotlight size", Range(0,1)) = 0.1
 		_RingSize("Ring size", Range(0,1)) = 0.1
 	}
@@ -48,9 +49,11 @@
 			};
 
 			float4 _Color;
+			float4 _EnemyColor;
 			float _CircleRadius;
 			float _RingSize;
 			uniform float4 _Collisions[264];
+			uniform fixed _CollisionsByEnemy[264];
 			uniform float _ArrayLength = 0;
 			
 			v2g vert (appdata v)
@@ -69,6 +72,14 @@
 				fixed4 col = _Color;
 				
 				for (int k = 0; k < _ArrayLength; k++) {
+
+					if (_CollisionsByEnemy[k] == 0) {
+						col.xyz = _Color.xyz;
+					}
+					else {
+						col.xyz = _EnemyColor.xyz;
+					}
+
 					float dist = distance(i.worldPos.xy, _Collisions[k].xy);
 					if (dist < _CircleRadius) {
 						if (_Collisions[k].w > col.w) {
@@ -80,6 +91,13 @@
 						float lerpValue = lerp(_Collisions[k].w, 0, blendStrength / _RingSize);
 						if (lerpValue > col.w) {
 							col.w = lerpValue;
+
+							if (_CollisionsByEnemy[k] == 0) {
+								col = _Color;
+							}
+							else {
+								col = _EnemyColor;
+							}
 						}
 					}
 				}
