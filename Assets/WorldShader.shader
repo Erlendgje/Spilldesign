@@ -2,8 +2,6 @@
 {
 	Properties
 	{
-		_Color("Color", Color) = (1,1,1,0)
-		_EnemyColor("Enemy color", Color) = (1,0,0,0)
 		_CircleRadius("Spotlight size", Range(0,1)) = 0.1
 		_RingSize("Ring size", Range(0,1)) = 0.1
 	}
@@ -13,7 +11,7 @@
 		"Queue" = "Transparent"
 		"RenderType" = "Transparent" }
 		LOD 100
-		
+
 
 		Pass
 		{
@@ -24,87 +22,73 @@
 
 			CGPROGRAM
 			#pragma vertex vert
-			//#pragma geometry geom
-			#pragma fragment frag
-			
-			#include "UnityCG.cginc"
+		//#pragma geometry geom
+		#pragma fragment frag
 
-			struct appdata
-			{
-				float4 vertex : POSITION;
-			};
+		#include "UnityCG.cginc"
 
-			struct v2g
-			{
-				float4 vertex : SV_POSITION;
-				float3 worldPos : TEXCOORD0;
-				UNITY_VERTEX_OUTPUT_STEREO
-			};
+		struct appdata
+		{
+			float4 vertex : POSITION;
+		};
 
-			struct g2f
-			{
-				float4 projectionSpaceVertex : SV_POSITION;
-				float3 worldPos : TEXCOORD3;
-				UNITY_VERTEX_OUTPUT_STEREO
-			};
+		struct v2g
+		{
+			float4 vertex : SV_POSITION;
+			float3 worldPos : TEXCOORD0;
+			UNITY_VERTEX_OUTPUT_STEREO
+		};
 
-			float4 _Color;
-			float4 _EnemyColor;
-			float _CircleRadius;
-			float _RingSize;
-			uniform float4 _Collisions[264];
-			uniform fixed _CollisionsByEnemy[264];
-			uniform float _ArrayLength = 0;
-			
-			v2g vert (appdata v)
-			{
-				v2g o;
-				UNITY_SETUP_INSTANCE_ID(v);
-				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-				return o;
-			}
-			
-			fixed4 frag (g2f i) : SV_Target
-			{
-				// sample the texture
-				fixed4 col = _Color;
-				
-				for (int k = 0; k < _ArrayLength; k++) {
+		struct g2f
+		{
+			float4 projectionSpaceVertex : SV_POSITION;
+			float3 worldPos : TEXCOORD3;
+			UNITY_VERTEX_OUTPUT_STEREO
+		};
 
-					if (_CollisionsByEnemy[k] == 0) {
-						col.xyz = _Color.xyz;
-					}
-					else {
-						col.xyz = _EnemyColor.xyz;
-					}
+		float _CircleRadius;
+		float _RingSize;
+		uniform float4 _Collisions[264];
+		uniform float4 _CollisionColor[264];
+		uniform float _ArrayLength = 0;
 
-					float dist = distance(i.worldPos.xy, _Collisions[k].xy);
-					if (dist < _CircleRadius) {
-						if (_Collisions[k].w > col.w) {
-							col.w = _Collisions[k].w;
-						}
-					}
-					else if (dist > _CircleRadius && dist < _CircleRadius + _RingSize) {
-						float blendStrength = dist - _CircleRadius;
-						float lerpValue = lerp(_Collisions[k].w, 0, blendStrength / _RingSize);
-						if (lerpValue > col.w) {
-							col.w = lerpValue;
+		v2g vert(appdata v)
+		{
+			v2g o;
+			UNITY_SETUP_INSTANCE_ID(v);
+			UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+			o.vertex = UnityObjectToClipPos(v.vertex);
+			o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+			return o;
+		}
 
-							if (_CollisionsByEnemy[k] == 0) {
-								col = _Color;
-							}
-							else {
-								col = _EnemyColor;
-							}
-						}
+		fixed4 frag(g2f i) : SV_Target
+		{
+			// sample the texture
+			fixed4 col = float4(1, 1, 1, 0);
+
+			for (int k = 0; k < _ArrayLength; k++) {
+
+				float dist = distance(i.worldPos.xy, _Collisions[k].xy);
+				if (dist < _CircleRadius) {
+					if (_CollisionColor[k].w > col.w) {
+						col.w = _CollisionColor[k].w;
+						col.rgb = _CollisionColor[k].rgb;
 					}
 				}
-
-				return col;
+				else if (dist > _CircleRadius && dist < _CircleRadius + _RingSize) {
+					float blendStrength = dist - _CircleRadius;
+					float lerpValue = lerp(_CollisionColor[k].w, 0, blendStrength / _RingSize);
+					if (lerpValue > col.w) {
+						col.w = lerpValue;
+						col.rgb = _CollisionColor[k].rgb;
+					}
+				}
 			}
-			ENDCG
+
+			return col;
 		}
+		ENDCG
+	}
 	}
 }

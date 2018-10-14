@@ -33,7 +33,7 @@ public class DialogueHandler : MonoBehaviour {
 		
 		for (int i = 0; i < dialogue.conversations[pointInConversation].messages.Length; i++)
 		{
-			if (GameManager.gameManager.player.canSee())
+			if (Player.vision)
 			{
 				ps.Play();
 			}

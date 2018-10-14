@@ -23,11 +23,11 @@ MonoBehaviour:
     time: 0
     accessDoors: 0
   - messages:
-    - line: Hi there fella, as you can see I'm in a bit of a pickle.
+    - line: I saw what they did to you. I'm so sorry about your family.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: Would you please be so kind and get me out of this cage?
+    - line: I might be able to help you find them if let me out of this cage.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
     time: 0
     accessDoors: 0
   - messages:
-    - line: Here take this as a thank you. That potion will make you see.
+    - line: Here take this potion. It will sharpen your senses.
       guiding: 0
       pressE: 1
       item: {fileID: 11400000, guid: 963dba55f75b37f40984d14ba8db996f, type: 2}
@@ -63,7 +63,8 @@ MonoBehaviour:
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: Well, i need to go now, see you around.
+    - line: Well, i need to go now. You should be heading east to find your family.
+        Best of luck.
       guiding: 0
       pressE: 1
       item: {fileID: 0}

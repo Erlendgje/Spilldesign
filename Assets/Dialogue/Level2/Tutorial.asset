@@ -18,7 +18,8 @@ MonoBehaviour:
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: 'You gotta watch out for that guard over there. Don''t let him see you! '
+    - line: You gotta watch out for that guard over there. He can't hear you but he
+        can see you.
       guiding: 0
       pressE: 1
       item: {fileID: 0}

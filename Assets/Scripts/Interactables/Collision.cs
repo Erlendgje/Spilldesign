@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collision : MonoBehaviour {
 
 	private List<Vector4> collisions;
-	private List<float> hitByEnemy;
+	private List<Color> colorArray;
 	private static int MAX_COLLISIONS = 264;
 	private static float FADE = 0.5f;
 	private Material myMaterial;
@@ -14,7 +14,7 @@ public class Collision : MonoBehaviour {
 	private void Start()
 	{
 		collisions = new List<Vector4>(MAX_COLLISIONS);
-		hitByEnemy = new List<float>(MAX_COLLISIONS);
+        colorArray = new List<Color>(MAX_COLLISIONS);
 		myMaterial = new Material(Shader.Find("Unlit/WorldShader"));
 		this.GetComponent<MeshRenderer>().material = myMaterial;
 		collisionEvents = new List<ParticleCollisionEvent>();
@@ -29,21 +29,12 @@ public class Collision : MonoBehaviour {
 			if (collisions.Count >= MAX_COLLISIONS)
 			{
 				collisions.RemoveAt(0);
-				hitByEnemy.RemoveAt(0);
+                colorArray.RemoveAt(0);
 			}
 			Vector4 position = collisionEvents[i].intersection;
-			position.w = 1;
 			collisions.Add(position);
-			if (other.transform.root.CompareTag("Enemy"))
-			{
-				hitByEnemy.Add(1);
-			}
-			else
-			{
-				hitByEnemy.Add(0);
-			}
-			
-		}
+            colorArray.Add(other.GetComponentInParent<Character>().color);
+        }
 	}
 
 
@@ -56,12 +47,12 @@ public class Collision : MonoBehaviour {
 
 		for(int i = 0; i < collisions.Count; i++)
 		{
-			float fade = collisions[i].w - FADE * Time.deltaTime;
-			collisions[i] = new Vector4(collisions[i].x, collisions[i].y, collisions[i].z, fade);
-			if (collisions[i].w <= 0)
+			float fade = colorArray[i].a - FADE * Time.deltaTime;
+            colorArray[i] = new Vector4(colorArray[i].r, colorArray[i].g, colorArray[i].b, fade);
+			if (colorArray[i].a <= 0)
 			{
 				collisions.RemoveAt(i);
-				hitByEnemy.RemoveAt(i);
+                colorArray.RemoveAt(i);
 				if(collisions.Count == 0)
 				{
 					UpdateShader();
@@ -76,11 +67,11 @@ public class Collision : MonoBehaviour {
 	{
 		Vector4[] myArray = new Vector4[MAX_COLLISIONS];
 		collisions.ToArray().CopyTo(myArray, 0);
-		float[] mySecondArray = new float[MAX_COLLISIONS];
-		hitByEnemy.ToArray().CopyTo(mySecondArray, 0);
+		Color[] mySecondArray = new Color[MAX_COLLISIONS];
+		colorArray.ToArray().CopyTo(mySecondArray, 0);
 
 		this.GetComponent<MeshRenderer>().material.SetVectorArray("_Collisions", myArray);
-		this.GetComponent<MeshRenderer>().material.SetFloatArray("_CollisionsByEnemy", mySecondArray);
+		this.GetComponent<MeshRenderer>().material.SetColorArray("_CollisionColor", mySecondArray);
 		this.GetComponent<MeshRenderer>().material.SetFloat("_ArrayLength", (float)collisions.Count);
 	}
 }

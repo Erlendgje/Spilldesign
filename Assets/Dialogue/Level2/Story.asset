@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1e44923ab8db54cb9aed9d342ee3ef, type: 3}
+  m_Name: Story
+  m_EditorClassIdentifier: 
+  npcName: 
+  conversations:
+  - messages:
+    - line: There you are!
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: "I was told you would come this way. We don't have much time.\t"
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: 'I know where they keep your family, but it''s heavily guarded. '
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: Go down that road and talk to Alice.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: And this is important. No matter what Alice tells you to do, you need
+        to do the opposit.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: 'The OPPOSIT!
+
+        Okey?
+
+        Okey'
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: I'm afraid you have to go down there alone. The guards spotts me every
+        time.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: It's like the have super hearing or something, but theire vision aint
+        that good.
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    - line: 'Be carefull and if you find yourself in trouble just stand still. '
+      guiding: 0
+      pressE: 1
+      item: {fileID: 0}
+    dissapear: 1
+    time: 0
+    accessDoors: 0
+  disappear: 0

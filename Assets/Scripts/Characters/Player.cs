@@ -7,9 +7,10 @@ public class Player{
 	private List<Item> inventory;
 
 	private GameObject playerObject;
-	private Controller controller;
+    private Controller controller;
 
 	private int health = 1;
+    public static bool vision = false;
 
 	public Player()
 	{
@@ -25,9 +26,9 @@ public class Player{
 	{
 		if(item is Upgrade)
 		{
-			if (!controller.vision)
+			if (!Player.vision)
 			{
-				controller.vision = true;
+				Player.vision = true;
 			}
 			else
 			{
@@ -58,11 +59,6 @@ public class Player{
 	public void RemoveItem(Item item)
 	{
 		inventory.Remove(item);
-	}
-
-	public bool canSee()
-	{
-		return controller.vision;
 	}
 
 	public void canMove(bool canMove)

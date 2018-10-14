@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : Character {
 
 	public List<GameObject> path;
 	public bool loop;
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        base.Start();
 		if(path.Count != 0)
 		{
 			ps.Play();
