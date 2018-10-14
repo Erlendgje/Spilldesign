@@ -7,11 +7,10 @@ public class Player{
 	private List<Item> inventory;
 
 	private GameObject playerObject;
-	private Controller controller;
+    private Controller controller;
 
 	private int health = 1;
-	private short numberOfParticles = 200;
-	private float numberOfSeconds = 0.5f;
+    public static bool vision = false;
 
 	public Player()
 	{
@@ -27,9 +26,9 @@ public class Player{
 	{
 		if(item is Upgrade)
 		{
-			if (!controller.vision)
+			if (!Player.vision)
 			{
-				controller.vision = true;
+				Player.vision = true;
 			}
 			else
 			{
@@ -62,8 +61,8 @@ public class Player{
 		inventory.Remove(item);
 	}
 
-	public bool canSee()
+	public void canMove(bool canMove)
 	{
-		return controller.vision;
+		controller.setCanMove(canMove);
 	}
 }

@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour {
 		player = new Player();
 	}
 
+	private void Start()
+	{
+		DontDestroyOnLoad(this);
+	}
+
 	public void AddItem(Item item)
 	{
 		player.AddItem(item);
