@@ -14,16 +14,11 @@ MonoBehaviour:
   npcName: Tutorial
   conversations:
   - messages:
-    - line: Hold on there!
+    - line: Hmmm, that guard is always taking people. Maybe I can sneak past him?
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: You gotta watch out for that guard over there. He can't hear you but he
-        can see you.
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: Good luck!
+    - line: Oi, what are you looking at? Go on, get out of here!
       guiding: 0
       pressE: 1
       item: {fileID: 0}

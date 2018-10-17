@@ -14,61 +14,27 @@ MonoBehaviour:
   npcName: Thor
   conversations:
   - messages:
-    - line: You there! You are finally awake! Come over here and help me out will
-        ya?
-      guiding: 0
-      pressE: 0
-      item: {fileID: 0}
-    dissapear: 0
-    time: 0
-    accessDoors: 0
-  - messages:
-    - line: I saw what they did to you. I'm so sorry about your family.
+    - line: So another one has appeared.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: I might be able to help you find them if let me out of this cage.
+    - line: I am but a gatekeeper, here to guide new arrivals.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: You just have to get the key, it is right over there on the floor.
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: What, you don't see the key? Okey, I'll guide you.
-      guiding: 1
-      pressE: 1
-      item: {fileID: 0}
-    - line: Now come here and unlock this door.
-      guiding: 0
-      pressE: 0
-      item: {fileID: 0}
-    dissapear: 0
-    time: 0
-    accessDoors: 0
-  - messages:
-    - line: Here take this potion. It will sharpen your senses.
-      guiding: 0
-      pressE: 1
-      item: {fileID: 11400000, guid: 963dba55f75b37f40984d14ba8db996f, type: 2}
-    - line: Do you feel any different?
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: No...?
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: Hmmm, try pressing "space". It should work.
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: Well, i need to go now. You should be heading east to find your family.
-        Best of luck.
+    - line: There isn't really much to say. Press "space" and be on your way.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
     dissapear: 1
     time: 0
-    accessDoors: 1
+    accessDoors: 0
+  - messages:
+    - line: Time for me to go, I've got an important message for my master.
+      guiding: 0
+      pressE: 0
+      item: {fileID: 0}
+    dissapear: 1
+    time: 2
+    accessDoors: 0
   disappear: 1

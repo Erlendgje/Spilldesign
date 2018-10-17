@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour {
 	private void Start()
 	{
 		DontDestroyOnLoad(this);
+        DontDestroyOnLoad(Camera.main);
 	}
 
 	public void AddItem(Item item)

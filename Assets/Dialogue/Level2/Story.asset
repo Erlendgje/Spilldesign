@@ -14,50 +14,24 @@ MonoBehaviour:
   npcName: 
   conversations:
   - messages:
-    - line: There you are!
+    - line: Please someone help me!
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: "I was told you would come this way. We don't have much time.\t"
+    - line: The poor souls. The reapers.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: 'I know where they keep your family, but it''s heavily guarded. '
+    - line: Do you know where the reapers bring the poor souls that are cought?
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: Go down that road and talk to Alice.
+    - line: You don't even wanna know. Just save the souls of the past and do not
+        get tempted by salvation.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: And this is important. No matter what Alice tells you to do, you need
-        to do the opposit.
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: 'The OPPOSIT!
-
-        Okey?
-
-        Okey'
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: I'm afraid you have to go down there alone. The guards spotts me every
-        time.
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: It's like the have super hearing or something, but theire vision aint
-        that good.
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    - line: 'Be carefull and if you find yourself in trouble just stand still. '
-      guiding: 0
-      pressE: 1
-      item: {fileID: 0}
-    dissapear: 1
+    dissapear: 0
     time: 0
     accessDoors: 0
   disappear: 0

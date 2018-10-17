@@ -82,7 +82,12 @@ public class Enemy : Character {
 	{
 		if (spotted)
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-		}
-	}
+            GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.FindGameObjectWithTag("Checkpoint").transform.position;
+            GameManager.gameManager.player.canMove(true);
+            int index = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Additive);
+            SceneManager.UnloadSceneAsync(index);
+            SceneManager.SetActiveScene(SceneManager.GetSceneAt(index)); 
+        }
+    }
 }

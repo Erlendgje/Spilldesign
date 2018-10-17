@@ -6,6 +6,8 @@ public class Controller : Character
 {
 	public float speed;
 	public ParticleSystem ps;
+	public ParticleSystem psPassive;
+    private bool psPassiveActive = false;
 	private bool canMove = true;
     private float cd = 0.5f;
     private float cdRemaining;
@@ -14,6 +16,7 @@ public class Controller : Character
 	{
         base.Start();
 		GameManager.gameManager.player.SetPlayerObject(this.gameObject, this);
+        DontDestroyOnLoad(this);
 	}
 
 	// Update is called once per frame
@@ -34,6 +37,21 @@ public class Controller : Character
                 cdRemaining = cd;
 			}
 		}
+
+        if(this.GetComponent<Rigidbody>().velocity.x != 0 || this.GetComponent<Rigidbody>().velocity.y != 0)
+        {
+            if (!psPassiveActive)
+            {
+                psPassive.Play();
+                psPassiveActive = true;
+            }
+        }
+        else
+        {
+            psPassive.Stop();
+            psPassiveActive = false;
+        }
+
 	}
 
 	private void FixedUpdate()

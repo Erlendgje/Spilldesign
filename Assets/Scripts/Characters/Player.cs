@@ -10,7 +10,7 @@ public class Player{
     private Controller controller;
 
 	private int health = 1;
-    public static bool vision = false;
+    public static bool vision = true;
 
 	public Player()
 	{

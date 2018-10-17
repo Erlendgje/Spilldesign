@@ -113,45 +113,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1868076592
+--- !u!1001 &147386393
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 114330611048367690, guid: 80070822b4336c647ae0c98463e0a282,
+        type: 2}
+      propertyPath: adjecentScenes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.836
+      value: 57.644127
       objectReference: {fileID: 0}
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.8182
+      value: -5.720277
       objectReference: {fileID: 0}
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -0.052589808
       objectReference: {fileID: 0}
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4226337245642362, guid: 021e8c7987bd554468a7211194359159, type: 2}
+    - target: {fileID: 4765089599136490, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65353724343325148, guid: 80070822b4336c647ae0c98463e0a282,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2.7998097
+      objectReference: {fileID: 0}
+    - target: {fileID: 65353724343325148, guid: 80070822b4336c647ae0c98463e0a282,
+        type: 2}
+      propertyPath: m_Center.x
+      value: 1.069572
+      objectReference: {fileID: 0}
+    - target: {fileID: 65353724343325148, guid: 80070822b4336c647ae0c98463e0a282,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 13.006069
+      objectReference: {fileID: 0}
+    - target: {fileID: 65353724343325148, guid: 80070822b4336c647ae0c98463e0a282,
+        type: 2}
+      propertyPath: m_Center.y
+      value: -4.914123
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330611048367690, guid: 80070822b4336c647ae0c98463e0a282,
+        type: 2}
+      propertyPath: thisScene
+      value: Level3_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330611048367690, guid: 80070822b4336c647ae0c98463e0a282,
+        type: 2}
+      propertyPath: adjecentScenes.Array.data[0]
+      value: Level2_1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 021e8c7987bd554468a7211194359159, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 80070822b4336c647ae0c98463e0a282, type: 2}
   m_IsPrefabAsset: 0
