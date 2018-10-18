@@ -14,24 +14,25 @@ MonoBehaviour:
   npcName: 
   conversations:
   - messages:
-    - line: Please someone help me!
+    - line: 'You should get out of this place! It''s cursed
+
+'
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: The poor souls. The reapers.
+    - line: It's cursed I tell you!!!
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: Do you know where the reapers bring the poor souls that are cought?
+    - line: Those who enter here never return. But they have never caught me.
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    - line: You don't even wanna know. Just save the souls of the past and do not
-        get tempted by salvation.
+    - line: Because I allways stand still!
       guiding: 0
       pressE: 1
       item: {fileID: 0}
-    dissapear: 0
+    dissapear: 1
     time: 0
     accessDoors: 0
   disappear: 0

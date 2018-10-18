@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueHandler : MonoBehaviour {
+public class DialogueHandler : MonoBehaviour
+{
 
 	private float time = 0.05f;
 
@@ -19,8 +20,7 @@ public class DialogueHandler : MonoBehaviour {
 
 	public void activate(bool ifActivated)
 	{
-		if(ifActivated && isRenderingDialog)
-		{
+		if (ifActivated && isRenderingDialog) {
 			return;
 		}
 		StartCoroutine(StartConversation());
@@ -30,62 +30,51 @@ public class DialogueHandler : MonoBehaviour {
 	{
 		yield return new WaitWhile(() => isRendering());
 		isRenderingDialog = true;
-		
-		for (int i = 0; i < dialogue.conversations[pointInConversation].messages.Length; i++)
-		{
-			if (Player.vision)
-			{
+
+		for (int i = 0; i < dialogue.conversations[pointInConversation].messages.Length; i++) {
+			if (Player.vision) {
 				ps.Play();
 			}
 			StartCoroutine(DisplayText(dialogue.conversations[pointInConversation].messages[i].line, false));
 
 			yield return new WaitWhile(() => writingText);
 			ps.Stop();
-			if (dialogue.conversations[pointInConversation].messages[i].pressE)
-			{
+			if (dialogue.conversations[pointInConversation].messages[i].pressE) {
 				infoMesh.SetActive(true);
 				yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.E));
 				infoMesh.SetActive(false);
 			}
 
-			if(dialogue.conversations[pointInConversation].messages[i].item != null)
-			{
+			if (dialogue.conversations[pointInConversation].messages[i].item != null) {
 				GameManager.gameManager.AddItem(dialogue.conversations[pointInConversation].messages[i].item);
 			}
 
-			if (dialogue.conversations[pointInConversation].messages[i].guiding)
-			{
+			if (dialogue.conversations[pointInConversation].messages[i].guiding) {
 				StartCoroutine(GetComponent<Guiding>().GuidePlayer());
 				yield return new WaitUntil(() => GetComponent<Guiding>().isPickedUp());
 			}
 		}
 
-		if (dialogue.conversations[pointInConversation].accessDoors)
-		{
+		if (dialogue.conversations[pointInConversation].accessDoors) {
 			notifyObservers();
 		}
 
-		if (dialogue.conversations[pointInConversation].dissapear)
-		{
+		if (dialogue.conversations[pointInConversation].dissapear) {
 			yield return new WaitForSeconds(dialogue.conversations[pointInConversation].time);
 			textBobble.SetActive(false);
 		}
-		if (dialogue.disappear)
-		{
-			if(pointInConversation + 1 == dialogue.conversations.Length)
-			{
+		if (dialogue.disappear) {
+			if (pointInConversation + 1 == dialogue.conversations.Length) {
 				Destroy(this.gameObject);
 			}
 			NextConversation();
 		}
-		else
-		{
-			if(pointInConversation +1 != dialogue.conversations.Length)
-			{
+		else {
+			if (pointInConversation + 1 != dialogue.conversations.Length) {
 				NextConversation();
 			}
 		}
-		
+
 		isRenderingDialog = false;
 	}
 
@@ -97,22 +86,18 @@ public class DialogueHandler : MonoBehaviour {
 		string builder = "";
 		textMesh.text = "";
 		string[] parts = text.Split(' ');
-		for(int i = 0; i < parts.Length; i++)
-		{
+		for (int i = 0; i < parts.Length; i++) {
 			char[] subParts = parts[i].ToCharArray();
-			for(int k = 0; k < subParts.Length; k++)
-			{
+			for (int k = 0; k < subParts.Length; k++) {
 				textMesh.text += subParts[k];
-				if (!instant)
-				{
+				if (!instant) {
 					yield return new WaitForSeconds(time);
 				}
 			}
 
 			textMesh.text += ' ';
-			
-			if (textMesh.GetComponent<Renderer>().bounds.extents.x > rowLimit)
-			{
+
+			if (textMesh.GetComponent<Renderer>().bounds.extents.x > rowLimit) {
 				textMesh.text = builder.TrimEnd() + System.Environment.NewLine + parts[i] + ' ';
 			}
 			builder = textMesh.text;
@@ -137,8 +122,7 @@ public class DialogueHandler : MonoBehaviour {
 
 	private void notifyObservers()
 	{
-		foreach(Door d in observers)
-		{
+		foreach (Door d in observers) {
 			d.Notify();
 		}
 	}
